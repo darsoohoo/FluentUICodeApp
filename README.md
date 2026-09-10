@@ -35,4 +35,3 @@ Do not reinitialize the committed app configuration unless intentionally targeti
 - [Microsoft Code Apps quickstart](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/how-to/create-an-app-from-scratch)
 - [Project handoff](docs/project-handoff.md)
 - [Workflow registry](docs/automation-registry.md)
-
