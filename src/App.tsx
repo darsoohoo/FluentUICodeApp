@@ -1,5 +1,6 @@
 import { useState } from 'react'
-import { Badge, FluentProvider, Switch, webDarkTheme, webLightTheme } from '@fluentui/react-components'
+import { Badge, FluentProvider, Switch } from '@fluentui/react-components'
+import { darkTheme, lightTheme } from './theme'
 import { LeftNavigation } from './components/LeftNavigation'
 import { ProjectsDataGrid } from './components/ProjectsDataGrid'
 import { ProjectsTable } from './components/ProjectsTable'
@@ -11,7 +12,7 @@ export default function App() {
   const [darkMode, setDarkMode] = useState(false)
 
   return (
-    <FluentProvider theme={darkMode ? webDarkTheme : webLightTheme} className="app">
+    <FluentProvider theme={darkMode ? darkTheme : lightTheme} className="app">
       <aside className="sidebar">
         <div className="brand-mark" aria-hidden="true">F</div>
         <h1>Fluent UI 2</h1>
