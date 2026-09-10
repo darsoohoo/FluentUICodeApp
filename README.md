@@ -54,3 +54,8 @@ import { Stack } from './components/Stack'
 ```
 
 The navigation demonstrates a vertical Stack with a smaller Fluent gap. The header demonstrates a horizontal Stack with centered items. Copy Stack.tsx into your project and keep the surrounding FluentProvider for theme tokens. Gap accepts CSS lengths or numbers; align accepts CSS align-items values. Page-specific wrapping and distribution stay in App.css to keep the Stack API small.
+
+## Purple brand theme
+`src/theme.ts` contains the 16 supplied BrandVariants colors and generates light/dark themes with Fluent v9's createLightTheme and createDarkTheme. The dark theme explicitly uses brand steps 110 and 120 for colorBrandForeground1 and colorBrandForeground2. App.tsx passes the selected theme to FluentProvider; Fluent components and CSS tokens inherit the purple palette automatically.
+
+To reuse it, copy theme.ts and import lightTheme and darkTheme into your app. The supplied full token exports were checked for context; the compact palette and two explicit overrides are the maintained source so the example stays easy to copy.
