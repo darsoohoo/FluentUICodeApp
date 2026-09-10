@@ -1,4 +1,5 @@
-import { Button } from '@fluentui/react-components'
+import { Button, tokens } from '@fluentui/react-components'
+import { Stack } from './Stack'
 
 type Props = {
   page: string
@@ -8,13 +9,14 @@ type Props = {
 export function LeftNavigation({ page, onPageChange }: Props) {
   return (
     <nav aria-label="Examples" className="navigation">
-      <Button appearance={page === 'data-grid' ? 'primary' : 'subtle'}
-        aria-current={page === 'data-grid' ? 'page' : undefined}
-        onClick={() => onPageChange('data-grid')}>Data grid</Button>
-      <Button appearance={page === 'table' ? 'primary' : 'subtle'}
-        aria-current={page === 'table' ? 'page' : undefined}
-        onClick={() => onPageChange('table')}>Table</Button>
+      <Stack gap={tokens.spacingVerticalS}>
+        <Button appearance={page === 'data-grid' ? 'primary' : 'subtle'}
+          aria-current={page === 'data-grid' ? 'page' : undefined}
+          onClick={() => onPageChange('data-grid')}>Data grid</Button>
+        <Button appearance={page === 'table' ? 'primary' : 'subtle'}
+          aria-current={page === 'table' ? 'page' : undefined}
+          onClick={() => onPageChange('table')}>Table</Button>
+      </Stack>
     </nav>
   )
 }
-

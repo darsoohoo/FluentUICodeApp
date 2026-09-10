@@ -35,3 +35,22 @@ Do not reinitialize the committed app configuration unless intentionally targeti
 - [Microsoft Code Apps quickstart](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/how-to/create-an-app-from-scratch)
 - [Project handoff](docs/project-handoff.md)
 - [Workflow registry](docs/automation-registry.md)
+
+## Reusable Stack
+`src/components/Stack.tsx` is a small local flexbox wrapper using Fluent v9 spacing tokens. It is not a Fluent v8 dependency. `children` is required; `direction` defaults to `column`, `gap` to `tokens.spacingVerticalM`, and `align` to `stretch`.
+
+```tsx
+import { Stack } from './components/Stack'
+
+<Stack>
+  <h2>Projects</h2>
+  <p>Three sample projects.</p>
+</Stack>
+
+<Stack direction="row" gap={16} align="center">
+  <span>Project</span>
+  <span>Owner</span>
+</Stack>
+```
+
+The navigation demonstrates a vertical Stack with a smaller Fluent gap. The header demonstrates a horizontal Stack with centered items. Copy Stack.tsx into your project and keep the surrounding FluentProvider for theme tokens. Gap accepts CSS lengths or numbers; align accepts CSS align-items values. Page-specific wrapping and distribution stay in App.css to keep the Stack API small.

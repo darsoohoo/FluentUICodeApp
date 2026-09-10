@@ -3,6 +3,7 @@ import { Badge, FluentProvider, Switch, webDarkTheme, webLightTheme } from '@flu
 import { LeftNavigation } from './components/LeftNavigation'
 import { ProjectsDataGrid } from './components/ProjectsDataGrid'
 import { ProjectsTable } from './components/ProjectsTable'
+import { Stack } from './components/Stack'
 import './App.css'
 
 export default function App() {
@@ -20,8 +21,10 @@ export default function App() {
       </aside>
       <main>
         <header className="topbar">
-          <span>Component examples</span>
-          <Switch label="Dark theme" checked={darkMode} onChange={(_, data) => setDarkMode(data.checked)} />
+          <Stack direction="row" align="center">
+            <span>Component examples</span>
+            <Switch label="Dark theme" checked={darkMode} onChange={(_, data) => setDarkMode(data.checked)} />
+          </Stack>
         </header>
         <section className="content">
           <Badge appearance="tint" color="brand">3 sample projects</Badge>
