@@ -1,35 +1,41 @@
 import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { Badge, FluentProvider, Switch, webDarkTheme, webLightTheme } from '@fluentui/react-components'
+import { LeftNavigation } from './components/LeftNavigation'
+import { ProjectsDataGrid } from './components/ProjectsDataGrid'
+import { ProjectsTable } from './components/ProjectsTable'
 import './App.css'
 
-function App() {
-  const [count, setCount] = useState(0)
+export default function App() {
+  const [page, setPage] = useState('data-grid')
+  const [darkMode, setDarkMode] = useState(false)
 
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
+    <FluentProvider theme={darkMode ? webDarkTheme : webLightTheme} className="app">
+      <aside className="sidebar">
+        <div className="brand-mark" aria-hidden="true">F</div>
+        <h1>Fluent UI 2</h1>
+        <p className="muted">A small, simple example.</p>
+        <LeftNavigation page={page} onPageChange={setPage} />
+        <div className="sidebar-footer">Power Apps Code App<br />React v9 components</div>
+      </aside>
+      <main>
+        <header className="topbar">
+          <span>Component examples</span>
+          <Switch label="Dark theme" checked={darkMode} onChange={(_, data) => setDarkMode(data.checked)} />
+        </header>
+        <section className="content">
+          <Badge appearance="tint" color="brand">3 sample projects</Badge>
+          <h2>{page === 'data-grid' ? 'Data grid' : 'Table'}</h2>
+          <p className="description">{page === 'data-grid'
+            ? 'Explore a small project list. Select rows or click a column heading to sort.'
+            : 'The same three projects in a simple, read-only table.'}</p>
+          <div className="surface">
+            {page === 'data-grid' ? <ProjectsDataGrid /> : <ProjectsTable />}
+          </div>
+          <p className="muted footnote">Sample data only. Selection resets when you leave the data grid.</p>
+        </section>
+      </main>
+    </FluentProvider>
   )
 }
 
-export default App

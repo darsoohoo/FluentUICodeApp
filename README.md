@@ -1,75 +1,38 @@
-# React + TypeScript + Vite
+# Fluent UI 2 Examples
+A small Power Apps Code App for makers who want readable, copyable Fluent UI examples. Uses actual Fluent UI React v9 (9.74.7), React, TypeScript, and Microsoft's Vite template.
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-It is preconfigured to work with Power Apps Code Apps.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
-
-## React Compiler
-
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
-
-## Expanding the ESLint configuration
-
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
-
-```js
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-
-      // Remove tseslint.configs.recommended and replace with this
-      tseslint.configs.recommendedTypeChecked,
-      // Alternatively, use this for stricter rules
-      tseslint.configs.strictTypeChecked,
-      // Optionally, add this for stylistic rules
-      tseslint.configs.stylisticTypeChecked,
-
-      // Other configs...
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Run
+Use Node.js LTS and PowerShell:
+```powershell
+npm.cmd ci
+npm.cmd run dev
+npm.cmd run lint
+npm.cmd run build
 ```
+Open the Local URL printed by Vite to try the sample without a connector. Use Local Play for the Power Apps host.
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+## Read or copy the source
+- `src/App.tsx`: FluentProvider, light/dark themes, and page layout.
+- `src/components/LeftNavigation.tsx`: two Fluent buttons in a semantic navigation landmark.
+- `src/components/ProjectsDataGrid.tsx`: column definitions, sorting, and row selection.
+- `src/components/ProjectsTable.tsx`: straightforward read-only table.
+- `src/data/projects.ts`: exactly three sample projects.
+- `src/App.css`: layout using theme tokens supplied by FluentProvider.
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+Copy a component together with its data file, install `@fluentui/react-components`, and render it inside a FluentProvider. There is no router, icon dependency, backend, or state library. Sorting and selection are local; selection resets when the grid unmounts.
 
-export default defineConfig([
-  globalIgnores(['dist']),
-  {
-    files: ['**/*.{ts,tsx}'],
-    extends: [
-      // Other configs...
-      // Enable lint rules for React
-      reactX.configs['recommended-typescript'],
-      // Enable lint rules for React DOM
-      reactDom.configs.recommended,
-    ],
-    languageOptions: {
-      parserOptions: {
-        project: ['./tsconfig.node.json', './tsconfig.app.json'],
-        tsconfigRootDir: import.meta.dirname,
-      },
-      // other options...
-    },
-  },
-])
+## Publish
+The configured environment is SPDEV-Dev2. Install the official CLI if needed and use your authorized tenant account:
+```powershell
+npm.cmd install --global @microsoft/power-apps-cli
+npm.cmd run build
+pa.cmd app push
 ```
+Do not reinitialize the committed app configuration unless intentionally targeting a new app or environment.
+
+## References
+- [Microsoft Fluent UI 2 React setup](https://fluent2.microsoft.design/get-started/develop)
+- [Microsoft Code Apps quickstart](https://learn.microsoft.com/en-us/power-apps/developer/code-apps/how-to/create-an-app-from-scratch)
+- [Project handoff](docs/project-handoff.md)
+- [Workflow registry](docs/automation-registry.md)
+
